@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3b3486">
+  <meta name="description" content="Test your knowledge of world history and the Bible.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Quiz">
+  <title>History &amp; Bible Quiz</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <!-- Home -->
+    <section id="screen-home" class="screen active">
+      <header class="hero">
+        <div class="logo" aria-hidden="true">📜</div>
+        <h1>History &amp; Bible Quiz</h1>
+        <p class="sub">Pick a topic and see how much you know.</p>
+      </header>
+
+      <div class="cards">
+        <button class="cat-card" data-cat="history">
+          <span class="cat-icon" aria-hidden="true">🏛️</span>
+          <span class="cat-text"><strong>World History</strong><small id="best-history">No score yet</small></span>
+        </button>
+        <button class="cat-card" data-cat="bible">
+          <span class="cat-icon" aria-hidden="true">📖</span>
+          <span class="cat-text"><strong>The Bible</strong><small id="best-bible">No score yet</small></span>
+        </button>
+        <button class="cat-card" data-cat="mixed">
+          <span class="cat-icon" aria-hidden="true">🎲</span>
+          <span class="cat-text"><strong>Mixed</strong><small id="best-mixed">No score yet</small></span>
+        </button>
+      </div>
+
+      <div class="settings">
+        <div class="setting">
+          <span>Questions</span>
+          <div class="seg" role="radiogroup" aria-label="Number of questions">
+            <button data-count="5">5</button>
+            <button data-count="10">10</button>
+            <button data-count="20">20</button>
+          </div>
+        </div>
+        <label class="setting">
+          <span>15-second timer</span>
+          <input type="checkbox" id="timer-toggle" class="switch">
+        </label>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="screen-quiz" class="screen">
+      <div class="topbar">
+        <button class="icon-btn" id="quit-btn" aria-label="Quit quiz">✕</button>
+        <div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
+        <span class="score-pill" id="score-pill">0</span>
+      </div>
+      <div class="timer" id="timer"><div class="timer-fill" id="timer-fill"></div></div>
+      <p class="q-meta" id="q-meta"></p>
+      <h2 class="question" id="question"></h2>
+      <div class="choices" id="choices"></div>
+      <div class="feedback" id="feedback" hidden>
+        <p class="feedback-title" id="feedback-title"></p>
+        <p class="feedback-text" id="feedback-text"></p>
+      </div>
+      <button class="primary" id="next-btn" hidden>Next</button>
+    </section>
+
+    <!-- Results -->
+    <section id="screen-result" class="screen">
+      <div class="result-top">
+        <div class="ring" id="ring"><span id="result-pct">0%</span></div>
+        <h2 id="result-title"></h2>
+        <p class="sub" id="result-sub"></p>
+      </div>
+      <div class="actions">
+        <button class="primary" id="again-btn">Play again</button>
+        <button class="secondary" id="home-btn">Home</button>
+      </div>
+      <h3 class="review-title" id="review-title">Review</h3>
+      <ol class="review" id="review"></ol>
+    </section>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

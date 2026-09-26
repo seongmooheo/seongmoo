@@ -1,6 +1,6 @@
-// Cache-first service worker so the quiz works offline.
-// Bump CACHE when any asset changes so phones pick up the new version.
-const CACHE = "quiz-v1";
+// Network-first service worker: always tries to fetch the latest files and
+// falls back to the cached copy when offline.
+const CACHE = "quiz-v2";
 const ASSETS = [
   "./",
   "index.html",
@@ -27,5 +27,15 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
-  e.respondWith(caches.match(e.request).then((hit) => hit || fetch(e.request)));
+  e.respondWith(
+    fetch(e.request)
+      .then((res) => {
+        if (res.ok && new URL(e.request.url).origin === location.origin) {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put(e.request, copy));
+        }
+        return res;
+      })
+      .catch(() => caches.match(e.request, { ignoreSearch: true }))
+  );
 });

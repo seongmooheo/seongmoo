@@ -1,7 +1,7 @@
 {
-  "name": "History & Bible Quiz",
+  "name": "History, Bible & Geography Quiz",
   "short_name": "Quiz",
-  "description": "Test your knowledge of world history and the Bible.",
+  "description": "Test your knowledge of history, the Bible and geography.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

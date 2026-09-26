@@ -55,7 +55,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
 /* Home */
-.hero { text-align: center; margin: 16px 0 24px; }
+.lang-row { display: flex; justify-content: flex-end; }
+.lang-row .seg { background: var(--surface); border: 1px solid var(--border); }
+.hero { text-align: center; margin: 8px 0 24px; }
 .logo {
   width: 72px; height: 72px; margin: 0 auto 12px;
   display: grid; place-items: center; font-size: 38px;
